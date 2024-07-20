@@ -58,20 +58,31 @@ class DataBase:
                       ensure_ascii=False, indent=4)
 
 
+    def title_search(self, title: str):
+        """Метод позволяет осуществлять поиск по заголовку книги"""
+        tmp_data = self.reading()
+        books = list(tmp_data.values())
+        for book in books:
+            if book['title'] == title:
+                return tmp_data[str(book['id'])]
+        raise Exception(f'Книга с заголовком "{title}" не найдена')
+
+
 
 if __name__ == '__main__':
     db = DataBase()
-    print(db.reading())
-    db.recording(Book('asdadad', 'adada', 2015))
-    print(db.reading())
-    db.recording(Book('hjfhj', 'ghdhf', 2018))
-    print(db.reading())
-    db.recording(Book('bcvnfg', 'xcvxb', 2000))
-    print(db.reading())
-    # print(db.remove(3))
     # print(db.reading())
-    print(db.change_status(2, 'ывф'))
-    print(db.reading())
+    # db.recording(Book('asdadad', 'adada', 2015))
+    # print(db.reading())
+    # db.recording(Book('hjfhj', 'ghdhf', 2018))
+    # print(db.reading())
+    # db.recording(Book('bcvnfg', 'xcvxb', 2000))
+    # print(db.reading())
+    # # print(db.remove(3))
+    # # print(db.reading())
+    # print(db.change_status(2, 'ывф'))
+    # print(db.reading())
+    print(db.title_search('hjfhj'))
 
 
 
