@@ -1,7 +1,6 @@
 import json
 import os
 
-import db_json
 from book import Book
 
 class DataBase:
@@ -18,7 +17,6 @@ class DataBase:
             with open(self.__name_db, 'w', encoding="utf-8") as file:
                 json.dump(tmp_data, file,
                           ensure_ascii=False, indent=4)
-
 
     def recording(self, data: object) -> None:
         """Метод записывает данные в файл JSON"""
@@ -37,11 +35,27 @@ class DataBase:
             templates = json.loads(file.read())
         return templates
 
-    def remove(self):
+    def remove(self, id: int):
         """Метод считывает данные из файла "db.json, удаляет запись по "id" """
         tmp_data = self.reading()
-        data1 = tmp_data['books']
-        return data1
+        tmp_data.pop(str(id))
+        value = json.dumps(tmp_data)
+        value = json.loads(str(value))
+        with open(self.__name_db, 'w', encoding='utf-8') as file:
+            json.dump(value, file,
+                      ensure_ascii=False, indent=4)
+
+    def change_status(self, id: int, status: str):
+        """Метод позволяет изменять статус книги"""
+        tmp_data = self.reading()
+        book = tmp_data.pop(str(id))
+        book['status'] = status
+        tmp_data[str(id)] = book
+        value = json.dumps(tmp_data)
+        value = json.loads(str(value))
+        with open(self.__name_db, 'w', encoding='utf-8') as file:
+            json.dump(value, file, sort_keys=True,
+                      ensure_ascii=False, indent=4)
 
 
 
@@ -51,6 +65,12 @@ if __name__ == '__main__':
     db.recording(Book('asdadad', 'adada', 2015))
     print(db.reading())
     db.recording(Book('hjfhj', 'ghdhf', 2018))
+    print(db.reading())
+    db.recording(Book('bcvnfg', 'xcvxb', 2000))
+    print(db.reading())
+    # print(db.remove(3))
+    # print(db.reading())
+    print(db.change_status(2, 'ывф'))
     print(db.reading())
 
 

@@ -1,6 +1,6 @@
 class Book:
     __id = 1
-    __status = ('в наличии', 'выдана')
+    __status = 'в наличии'
 
 
     def __init__(self, title: str, author: str, year:int):
@@ -8,13 +8,8 @@ class Book:
         self.title = title
         self.author = author
         self.year = year
-        self.__status = Book.__status[0]
+        self.status = Book.__status
         Book.__id += 1
-
-
-    def remove_book(self, id: int):
-        """Метод удаляет книгу из реестра по ее "id" """
-        pass
 
 
     def __repr__(self):
