@@ -68,7 +68,7 @@ class DataBase:
         raise Exception(f'Книга с заголовком "{title}" не найдена')
 
     def search_author(self, author: str):
-        """Метод позволяет осуществлять поиск по заголовку книги"""
+        """Метод позволяет осуществлять поиск по автору книги"""
         tmp_data = self.reading()
         books = list(tmp_data.values())
         for book in books:
@@ -76,6 +76,14 @@ class DataBase:
                 return tmp_data[str(book['id'])]
         raise Exception(f'Книга с автором "{author}" не найдена')
 
+    def search_year(self, year: int):
+        """Метод позволяет осуществлять поиск по году издания книги"""
+        tmp_data = self.reading()
+        books = list(tmp_data.values())
+        for book in books:
+            if book['year'] == year:
+                return tmp_data[str(book['id'])]
+        raise Exception(f'Книга с годом издания "{year}" не найдена')
 
 
 if __name__ == '__main__':
@@ -93,6 +101,7 @@ if __name__ == '__main__':
     # print(db.reading())
     print(db.search_title('hjfhj'))
     print(db.search_author('adada'))
+    print(db.search_year(2000))
 
 
 
