@@ -1,12 +1,14 @@
 import json
 import os
+
+import db_json
 from book import Book
 
 class DataBase:
     """Класс DataBase реализует чтение/запись данных в формате JSON"""
 
     __name_db = 'db.json'
-    __data = {"books": []}
+    __data = {}
 
     def __init__(self):
 
@@ -21,9 +23,7 @@ class DataBase:
     def recording(self, data: object) -> None:
         """Метод записывает данные в файл JSON"""
         tmp_data = self.reading()
-        data1 = tmp_data['books']
-        elem = data1.append(data.__dict__)
-        tmp_data['books'] = data1
+        tmp_data[str(data.id)] = data.__dict__
         value = json.dumps(tmp_data)
         value = json.loads(str(value))
         with open(self.__name_db, 'w', encoding='utf-8') as file:
@@ -45,6 +45,13 @@ class DataBase:
 
 
 
+if __name__ == '__main__':
+    db = DataBase()
+    print(db.reading())
+    db.recording(Book('asdadad', 'adada', 2015))
+    print(db.reading())
+    db.recording(Book('hjfhj', 'ghdhf', 2018))
+    print(db.reading())
 
 
 
