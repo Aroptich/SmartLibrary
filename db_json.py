@@ -37,6 +37,15 @@ class DataBase:
             templates = json.loads(file.read())
         return templates
 
+    def remove(self):
+        """Метод считывает данные из файла "db.json, удаляет запись по "id" """
+        tmp_data = self.reading()
+        data1 = tmp_data['books']
+        return data1
+
+
+
+
 
 
 
