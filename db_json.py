@@ -58,7 +58,7 @@ class DataBase:
                       ensure_ascii=False, indent=4)
 
 
-    def title_search(self, title: str):
+    def search_title(self, title: str):
         """Метод позволяет осуществлять поиск по заголовку книги"""
         tmp_data = self.reading()
         books = list(tmp_data.values())
@@ -66,6 +66,15 @@ class DataBase:
             if book['title'] == title:
                 return tmp_data[str(book['id'])]
         raise Exception(f'Книга с заголовком "{title}" не найдена')
+
+    def search_author(self, author: str):
+        """Метод позволяет осуществлять поиск по заголовку книги"""
+        tmp_data = self.reading()
+        books = list(tmp_data.values())
+        for book in books:
+            if book['author'] == author:
+                return tmp_data[str(book['id'])]
+        raise Exception(f'Книга с автором "{author}" не найдена')
 
 
 
@@ -82,7 +91,8 @@ if __name__ == '__main__':
     # # print(db.reading())
     # print(db.change_status(2, 'ывф'))
     # print(db.reading())
-    print(db.title_search('hjfhj'))
+    print(db.search_title('hjfhj'))
+    print(db.search_author('adada'))
 
 
 
