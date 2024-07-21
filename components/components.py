@@ -185,3 +185,30 @@ def veiw_books():
     result = sub_menu()
     return result
 
+def set_status():
+    """Функция изменения статуса книги"""
+    # Очищает экран
+    os.system('cls')
+    title_app()
+    db = DataBase()
+    print('Изменение статуса'.center(50))
+    print("Изменение статуса книги в реестре происходит по ее 'id'")
+    id = int(input('Введите "id" книги: '))
+    # изменение статуса
+    print(f'1. "В наличии"\n'
+          f'2. "Выдана"')
+    # Меню действия
+    sub_action = input('Выберите действие, указав цифру от 1 или 2: ')
+    if sub_action == '1':
+        status = 'Выдана'
+    elif sub_action == '2':
+        status = "В наличии"
+    status_book = db.change_status(id, status)
+    if status_book is None:
+        print(f'Книга c id:{id} не найдена')
+    else:
+        print(f'Статус книги "{status_book["title"]} {status_book["author"]} '
+              f'{status_book["year"]}" изменен на "{status}"')
+    result = sub_menu()
+    return result
+
