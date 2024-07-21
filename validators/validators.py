@@ -21,3 +21,13 @@ def valid_title(title: str)-> str:
     except Exception as err:
         print(err)
 
+def valid_author(author: str)-> str:
+    """Функция проверяет на валидность автора. В случае не пройденной проверки вызывает исключение,
+     в противном случае возвращает заголовок"""
+    try:
+        if not isinstance(author, str):
+            raise ValueError(f'Автор должен быть строкового типа')
+        return author.capitalize()
+    except Exception as err:
+        print(err)
+

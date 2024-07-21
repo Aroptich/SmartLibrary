@@ -1,4 +1,4 @@
-from validators.validators import valid_year,valid_title
+from validators.validators import valid_year,valid_title, valid_author
 
 
 class Book:
@@ -9,7 +9,7 @@ class Book:
     def __init__(self, title: str, author: str, year:int):
         self.id = self.__id
         self.title = valid_title(title)
-        self.author = author.capitalize()
+        self.author = valid_author(author)
         self.year = valid_year(year)
         self.status = Book.__status
         Book.__id += 1
