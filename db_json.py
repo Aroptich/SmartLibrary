@@ -11,7 +11,7 @@ class DataBase:
 
     def __init__(self):
 
-        if os.path.exists(self.__name_db) == False:
+        if not os.path.exists(self.__name_db):
             tmp_data = json.dumps(self.__data)
             tmp_data = json.loads(str(tmp_data))
             with open(self.__name_db, 'w', encoding="utf-8") as file:
@@ -63,7 +63,7 @@ class DataBase:
         tmp_data = self.reading()
         books = list(tmp_data.values())
         for book in books:
-            if book['title'] == title:
+            if book['title'] == title.capitalize():
                 return tmp_data[str(book['id'])]
         raise Exception(f'Книга с заголовком "{title}" не найдена')
 
@@ -72,7 +72,7 @@ class DataBase:
         tmp_data = self.reading()
         books = list(tmp_data.values())
         for book in books:
-            if book['author'] == author:
+            if book['author'] == author.capitalize():
                 return tmp_data[str(book['id'])]
         raise Exception(f'Книга с автором "{author}" не найдена')
 
@@ -95,6 +95,7 @@ if __name__ == '__main__':
     # print(db.reading())
     # db.recording(Book('bcvnfg', 'xcvxb', 2000))
     # print(db.reading())
+    db.recording(Book('ukgp[hsh', 'xcCWEF', 15))
     # # print(db.remove(3))
     # # print(db.reading())
     # print(db.change_status(2, 'ывф'))

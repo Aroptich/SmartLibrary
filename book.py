@@ -5,8 +5,8 @@ class Book:
 
     def __init__(self, title: str, author: str, year:int):
         self.id = self.__id
-        self.title = title
-        self.author = author
+        self.title = title.capitalize()
+        self.author = author.capitalize()
         self.year = year
         self.status = Book.__status
         Book.__id += 1
