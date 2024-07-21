@@ -33,7 +33,7 @@ class DataBase:
 
 
     def reading(self) -> dict:
-        """Метод считывает данные из файла "db.json" и возвращает словарь"""
+        """Метод считывает данные из файла "db.json" и возвращает словарь с данными книг"""
         with open(self.__name_db, 'r', encoding='utf-8') as file:
             templates = json.loads(file.read())
         return templates

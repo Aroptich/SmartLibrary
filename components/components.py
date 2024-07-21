@@ -62,7 +62,7 @@ def settings():
     db = DataBase()
     return db
 
-
+#Подумать как возвращаться в меню добавления книги и производить добавление книги заново
 def add_book(number: str) -> bool | None:
     """Функция добавления книги. Принимает число ввиде строки"""
     db = settings()
@@ -167,3 +167,21 @@ def search_books():
             print(f'Книга/и {search_book} найдена/ы')
         result = sub_menu()
         return result
+
+
+def veiw_books():
+    """Функция для отображения всех книг библиотеки"""
+    # Очищает экран
+    os.system('cls')
+    db = DataBase()
+    title_app()
+    print('Список книг'.center(50))
+    # Все записи библиотеки
+    books = db.reading()
+    if len(books.values()) == 0:
+        print('В библиотеке нет книг')
+    for book in books.values():
+        print(f'{book["id"]}. {book["title"]} {book["author"]} {book["year"]}')
+    result = sub_menu()
+    return result
+
