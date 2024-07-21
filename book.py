@@ -1,3 +1,6 @@
+from validators.validators import valid_year,valid_title
+
+
 class Book:
     __id = 1
     __status = 'в наличии'
@@ -5,9 +8,9 @@ class Book:
 
     def __init__(self, title: str, author: str, year:int):
         self.id = self.__id
-        self.title = title.capitalize()
+        self.title = valid_title(title)
         self.author = author.capitalize()
-        self.year = year
+        self.year = valid_year(year)
         self.status = Book.__status
         Book.__id += 1
 
