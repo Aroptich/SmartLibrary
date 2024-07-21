@@ -76,9 +76,11 @@ class DataBase:
         try:
             tmp_data = self.reading()
             books = list(tmp_data.values())
+            list_books = []
             for book in books:
                 if book['title'] == title.capitalize():
-                    return tmp_data[str(book['id'])]
+                    list_books.append(tmp_data[str(book['id'])])
+            return list_books
         except Exception as err:
             print(err)
 

@@ -1,6 +1,6 @@
 import json
 from datetime import datetime
-def valid_year(year: int) -> int:
+def valid_year(year: int|str) -> int:
     """Функция проверяет на валидность год"""
     try:
         if not str(year).isdigit() or not isinstance(year, int):
