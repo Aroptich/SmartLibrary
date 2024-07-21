@@ -91,8 +91,6 @@ class DataBase:
             for book in books:
                 if book['author'] == author.capitalize():
                     list_books.append(tmp_data[str(book['id'])])
-                else:
-                    raise Exception(f'Книга/и с автором "{author}" не найдена/ы')
             return list_books
         except Exception as err:
             print(err)
@@ -106,8 +104,6 @@ class DataBase:
             for book in books:
                 if book['year'] == year:
                     list_books.append(tmp_data[str(book['id'])])
-                else:
-                    raise Exception(f'Книга с годом издания "{year}" не найдена')
             return list_books
         except Exception as err:
             print(err)
