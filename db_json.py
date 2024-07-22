@@ -46,8 +46,6 @@ class DataBase:
                 raise ValueError('Реестр книг пуст')
             del_data = tmp_data.pop(str(id))
             data = is_valid(tmp_data)
-            # value = json.dumps(tmp_data)
-            # value = json.loads(str(value))
             with open(self.__name_db, 'w', encoding='utf-8') as file:
                 json.dump(data, file,
                           ensure_ascii=False, indent=4)

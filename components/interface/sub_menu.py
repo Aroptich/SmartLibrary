@@ -1,3 +1,5 @@
+import os
+
 from components.interface.border import border
 
 @border
