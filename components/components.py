@@ -114,6 +114,10 @@ def menu_search_books():
           f'2. Автору\n'
           f'3. Году издания')
 
+@border
+def menu_status():
+    print(f'| 1. "В наличии"{" "*10} | 2. "Выдана"{" "*10} |')
+
 #Подумать как возвращаться в меню поиска и делать заново поиск
 def search_books():
     """Функция для поиска книг в реестре по заголовку/автору/году издания"""
@@ -200,8 +204,7 @@ def set_status():
         book = db.detail_book(id)
         print(f'{book["id"]}. {book["title"]} {book["author"]} {book["year"]}')
     # изменение статуса
-    print(f'1. "В наличии"\n'
-          f'2. "Выдана"')
+    menu_status()
     # Меню действия
     sub_action = input('Выберите действие, указав цифру от 1 или 2: ')
     if sub_action == '1':
