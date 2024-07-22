@@ -194,6 +194,11 @@ def set_status():
     print('Изменение статуса'.center(50))
     print("Изменение статуса книги в реестре происходит по ее 'id'")
     id = int(input('Введите "id" книги: '))
+    if len(db.detail_book(id)) == 0:
+        print(f'Книги с "{id}" не сушествует')
+    else:
+        book = db.detail_book(id)
+        print(f'{book["id"]}. {book["title"]} {book["author"]} {book["year"]}')
     # изменение статуса
     print(f'1. "В наличии"\n'
           f'2. "Выдана"')

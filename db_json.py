@@ -110,6 +110,17 @@ class DataBase:
         except Exception as err:
             print(err)
 
+    def detail_book(self, id: int) -> dict:
+        """Метод принимает "id" и возвращает данные книги"""
+        try:
+            tmp_data = self.reading()
+            if len(tmp_data) != 0:
+                book = tmp_data.get(str(id))
+                return book
+            raise ValueError('Реестр книг пуст')
+        except Exception as err:
+            print(err)
+
 
 # if __name__ == '__main__':
 #     db = DataBase()
