@@ -29,7 +29,9 @@ def search_books():
         if len(search_book) == 0:
             print(f'Книга/и с названием "{title}" не найдена/ы')
         else:
-            print(f'Книга/и {search_book} найдена/ы')
+            print('Результат поиска:')
+            for book in search_book:
+                print(f'{book["id"]}. {book["title"]} {book["author"]} {book["year"]}')
         result = sub_menu()
         return result
         #надо что-то дописать чтобы продолжить поиск

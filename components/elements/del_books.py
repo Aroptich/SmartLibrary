@@ -14,7 +14,7 @@ def del_book():
     print("Удаление книги из реестра происходит по ее 'id'")
     id = int(input('Введите "id" книги: '))
     book = db.remove(id)
-    if del_book is not None:
+    if book is not None:
         print(f'Книга {book["id"]}.{book["title"]} {book["author"]} {book["year"]}  удалена из реестра')
         result = sub_menu()
         return result

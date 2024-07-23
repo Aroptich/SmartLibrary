@@ -44,12 +44,15 @@ class DataBase:
             tmp_data = self.reading()
             if len(tmp_data) == 0:
                 raise ValueError('Реестр книг пуст')
-            del_data = tmp_data.pop(str(id))
-            data = is_valid(tmp_data)
-            with open(self.__name_db, 'w', encoding='utf-8') as file:
-                json.dump(data, file,
-                          ensure_ascii=False, indent=4)
-            return del_data
+            if tmp_data.get(str(id)) is not None:
+                del_data = tmp_data.pop(str(id))
+                data = is_valid(tmp_data)
+                with open(self.__name_db, 'w', encoding='utf-8') as file:
+                    json.dump(data, file,
+                              ensure_ascii=False, indent=4)
+                return del_data
+            else:
+                raise ValueError(f'Книги с таким "{id}" не существует')
         except Exception as err:
             print(err)
 

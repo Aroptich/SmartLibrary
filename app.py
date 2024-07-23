@@ -29,7 +29,7 @@ def app():
         # Удаление книги
         elif menu_action == '2':
             flag = del_book()
-            if flag:
+            if flag or None:
                 continue
             else:
                 break
