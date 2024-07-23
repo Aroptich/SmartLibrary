@@ -98,3 +98,44 @@ python app.py
 
 ![search_set_status](components/screenshots/search_set_status.png)
 
+## Архитектура приложения
+
+```
+< PROJECT ROOT >
+   |
+   |-- components/                 
+   |    |-- elements/
+   |    |      |-- add_books.py
+   |    |      |-- del_books.py
+   |    |      |-- input_fields.py     
+   |    |      |-- search_books.py     
+   |    |      |-- set_status.py     
+   |    |      |-- veiw_books.py     
+   |    |-- interface/
+   |    |      |-- border.py
+   |    |      |-- menu.py
+   |    |      |-- menu_search_books.py     
+   |    |      |-- menu_status.py     
+   |    |      |-- sub_menu.py     
+   |    |      |-- title.py  
+   |    |-- screenshots/            
+   |    |      |-- add_book.png
+   |    |      |-- bad_add_book.png
+   |    |      |-- bad_del_book.png     
+   |    |      |-- main_menu.png 
+   |    |      |-- menu_search_books.png
+   |    |      |-- search_all_books.png     
+   |    |      |-- success_add_book.png     
+   |    |      |-- success_del_book.png     
+   |    |      |-- success_result_search.png    
+   |    |
+   |-- models/ 
+   |    |-- book.py   
+   |-- validators/ 
+   |    |-- validators.py             
+   |              
+   |-- app.py
+   |-- db_json.py            
+   |-- README.md
+   |-- ************************************************* 
+```
