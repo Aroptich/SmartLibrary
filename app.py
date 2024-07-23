@@ -12,6 +12,8 @@ from db_json import DataBase
 
 
 def app():
+    # Очищает экран
+    os.system('cls')
     start = True
     while start:
         db = DataBase()
