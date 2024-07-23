@@ -13,7 +13,7 @@ def set_status():
     title_app()
     db = DataBase()
     print('Изменение статуса'.center(50))
-    print("Изменение статуса книги в реестре происходит по ее 'id'")
+    print("Изменение статуса книги в реестре происходит по ее\n'id'")
     id = int(input('Введите "id" книги: '))
     if len(db.detail_book(id)) == 0:
         print(f'Книги с "{id}" не сушествует')
@@ -26,13 +26,17 @@ def set_status():
     sub_action = input('Выберите действие, указав цифру от 1 или 2: ')
     if sub_action == '1':
         status = 'Выдана'
+        os.system('cls')
+        title_app()
     elif sub_action == '2':
         status = "В наличии"
+        os.system('cls')
+        title_app()
     status_book = db.change_status(id, status)
     if status_book is None:
         print(f'Книга c id:{id} не найдена')
     else:
         print(f'Статус книги "{status_book["title"]} {status_book["author"]} '
-              f'{status_book["year"]}" изменен на "{status}"')
+              f'{status_book["year"]}"\n изменен на "{status}"')
     result = sub_menu()
     return result
